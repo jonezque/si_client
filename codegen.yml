@@ -1,0 +1,14 @@
+schema: ../api/schema.gql
+documents: "src/**/!(*.d).{ts,tsx}"
+generates:
+   ./src/types.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: true
+hooks:
+  afterOneFileWrite:
+    - prettier --write
+    - eslint --fix
